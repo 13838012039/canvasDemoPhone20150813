@@ -19,6 +19,9 @@ ol {
 
 canvas {
     background: #ddd;
+    position: fixed;
+    top: 0;
+    left: 0;
 }
 
 .actions {
