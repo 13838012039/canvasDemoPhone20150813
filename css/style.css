@@ -100,4 +100,23 @@ canvas {
 
 .actions.x #eraser {
     display: none;
-} *35
+} */
+
+.line {
+    position: fixed;
+    right: 30px;
+    top: 70px;
+}
+
+.line>li {
+    margin: 20px 0;
+    width: 40px;
+}
+
+.line>.thin {
+    border-top: 5px solid black;
+}
+
+.line>.thick {
+    border-top: 10px solid black;
+}

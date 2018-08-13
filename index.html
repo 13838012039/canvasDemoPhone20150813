@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="./css/style.css">
-    <script src="//at.alicdn.com/t/font_789417_taycp012vu.js"></script>
+    <script src="//at.alicdn.com/t/font_789417_02luu1m5io3u.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>CanvasTest</title>
@@ -30,9 +30,12 @@
         <svg class="icon" id="eraser" aria-hidden="true">
                         <use xlink:href="#icon-xiangpi"></use>
                     </svg>
-        <svg class="icon" id="brush" aria-hidden="true">
+        <svg class="icon" id="clear" aria-hidden="true">
                             <use xlink:href="#icon-fl-shuazi"></use>
                         </svg>
+        <svg class="icon" id="download" aria-hidden="true">
+                                <use xlink:href="#icon-xiazai-"></use>
+                            </svg>
 
     </div>
     <ol class="colors">
@@ -41,6 +44,11 @@
         <li class="green" id="green"></li>
         <li class="yellow" id="yellow"></li>
         <li class="pink" id="pink"></li>
+    </ol>
+
+    <ol class="line">
+        <li class="thin" id="thin"></li>
+        <li class="thick" id="thick"></li>
     </ol>
 
 
@@ -72,6 +80,7 @@
         var yyy = document.getElementById('xxx');
         var context = yyy.getContext('2d');
         autoSetCanvarsSize(yyy);
+        var lineWidth = 5;
         listenToUser(yyy);
 
 
@@ -90,7 +99,7 @@
             context.beginPath();
 
             context.moveTo(x1, y1);
-            context.lineWidth = 5;
+            context.lineWidth = lineWidth;
             context.lineTo(x2, y2);
             context.stroke();
             context.closePath();
@@ -118,6 +127,20 @@
 
         }
 
+        clear.onclick = function() {
+            context.clearRect(0, 0, yyy.width, yyy.height);
+        }
+
+        download.onclick = function() {
+            var url = yyy.toDataURL("image/png");
+            console.log(url);
+            var a = document.createElement('a');
+            document.body.appendChild(a);
+            a.href = url;
+            a.download = '我的花儿';
+            a.target = '_blank';
+            a.click();
+        }
         red.onclick = function() {
             context.strokeStyle = 'red';
             context.fillStyle = 'red';
@@ -164,6 +187,12 @@
             yellow.classList.remove('active');
         }
 
+        thin.onclick = function() {
+            lineWidth = 5;
+        }
+        thick.onclick = function() {
+            lineWidth = 10;
+        }
 
 
 
